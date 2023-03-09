@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const EmployeeItem = (props) => {
+
+    const navigate = useNavigate();
+
   return (
     <table className="table table-striped">
       <thead className="table-dark">
@@ -8,6 +13,7 @@ const EmployeeItem = (props) => {
           <th scope="col">Phone</th>
           <th scope="col">Birthday</th>
           <th scope="col">Salary</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +26,9 @@ const EmployeeItem = (props) => {
                 <td>{el.phone}</td>
                 <td>{el.date}</td>
                 <td>{el.salary}</td>
+                <td>
+                    <button onClick={() => navigate(`/employee/${el.id}`)}>View</button>
+                </td>
               </tr>
             );
           })}

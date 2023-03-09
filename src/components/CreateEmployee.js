@@ -1,5 +1,6 @@
 import * as api from "../requests/API";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const CreateEmployee = () => {
   const [name, setName] = useState("");
@@ -7,6 +8,8 @@ const CreateEmployee = () => {
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [salary, setSalary] = useState("");
+
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,13 +23,14 @@ const CreateEmployee = () => {
     ) {
       window.alert("Please fill all the fields!");
     } else {
-      api.post("posts", {
+      api.post("employee", {
         name,
         email,
         phone: Number(phone),
         date,
         salary: Number(salary),
       });
+      navigate('/')
     }
   };
 

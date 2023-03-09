@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import CreateEmployee from "./components/CreateEmployee";
 import ShowAllEmployees from "./components/ShowAllEmployees";
 import NavBar from "./components/NavBar";
+import Details from "./components/Details";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/add-employee" element={<CreateEmployee />}></Route>
+          <Route path="/employee/:id" element={<Details />}></Route>
           <Route path="/" element={<ShowAllEmployees />}></Route>
         </Routes>
       </div>

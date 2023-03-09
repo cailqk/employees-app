@@ -1,20 +1,12 @@
 {
-  "posts": [
+  "employee": [
     {
-      "name": "some other name",
-      "email": "some other mail",
-      "phone": 7685769564,
-      "date": "21/12/1994",
-      "salary": 5430,
+      "name": "Name",
+      "email": "Mail",
+      "phone": "555",
+      "date": "28/01/1990",
+      "salary": "200",
       "id": 1
-    },
-    {
-      "name": "some name",
-      "email": "some mail",
-      "phone": 6546433546543,
-      "date": "22/02/2222",
-      "salary": 3000,
-      "id": 2
     },
     {
       "name": "Mike",

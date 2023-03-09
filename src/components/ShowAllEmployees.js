@@ -6,7 +6,7 @@ import EmployeeItem from "./EmployeeItem";
 const ShowAllEmployees = () => {
   const [info, setInfo] = useState("");
 
-  let url = "posts";
+  let url = "employee";
 
   api.get(url).then((res) => setInfo(res));
 

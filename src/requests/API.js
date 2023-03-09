@@ -27,5 +27,7 @@ async function request(method, url, data) {
 }
 
 const post = request.bind({}, "POST");
+const patch = request.bind({}, "PATCH");
+const del = request.bind({}, "DELETE");
 
-export { get, post };
+export { get, post, patch, del };
