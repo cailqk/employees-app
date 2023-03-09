@@ -1,10 +1,10 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
-import CreateEmployee from "./components/CreateEmployee";
-import ShowAllEmployees from "./components/ShowAllEmployees";
+import CreateEmployee from "./components/Employees/CreateEmployee";
+import ShowAllEmployees from "./components/Employees/ShowAllEmployees";
 import NavBar from "./components/NavBar";
-import Details from "./components/Details";
+import Details from "./components/Employees/Details";
 
 function App() {
   return (

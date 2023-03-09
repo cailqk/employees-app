@@ -1,4 +1,4 @@
-import * as api from "../requests/API";
+import * as api from "../../requests/API";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 

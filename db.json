@@ -1,20 +1,12 @@
 {
   "employee": [
     {
-      "name": "Name",
-      "email": "Mail",
-      "phone": "555",
-      "date": "28/01/1990",
-      "salary": "200",
-      "id": 1
-    },
-    {
-      "name": "Mike",
-      "email": "mike@gmail.com",
-      "phone": 359785634221,
+      "name": "Test",
+      "email": "test@test.com",
+      "phone": 359865845991,
       "date": "10/12/1999",
       "salary": 3000,
-      "id": 3
+      "id": 1
     }
   ],
   "comments": [

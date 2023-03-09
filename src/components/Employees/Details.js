@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
-import * as api from "../requests/API";
+import * as api from "../../requests/API";
 
 const Details = () => {
   const [employee, setEmployee] = useState({});

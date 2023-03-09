@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import './EmployeeItem.css'
 
 const EmployeeItem = (props) => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <table className="table table-striped">
@@ -17,6 +17,11 @@ const EmployeeItem = (props) => {
         </tr>
       </thead>
       <tbody>
+        {props.employees.length === 0 && (
+          <tr className="no-data" >
+            <td colSpan={6}>No data available</td>
+          </tr>
+        )}
         {props.employees.length > 0 &&
           props.employees.map((el) => {
             return (
@@ -27,7 +32,9 @@ const EmployeeItem = (props) => {
                 <td>{el.date}</td>
                 <td>{el.salary}</td>
                 <td>
-                    <button onClick={() => navigate(`/employee/${el.id}`)}>View</button>
+                  <button onClick={() => navigate(`/employee/${el.id}`)}>
+                    View
+                  </button>
                 </td>
               </tr>
             );
