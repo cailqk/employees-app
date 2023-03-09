@@ -1,17 +1,20 @@
 import * as api from "../requests/API";
 
+import { useState } from "react";
+import EmployeeItem from "./EmployeeItem";
 
 const ShowAllEmployees = () => {
-    let url = 'posts';
+  const [info, setInfo] = useState("");
 
+  let url = "posts";
 
-   
-return (
-    <div>{}</div>
-)
+  api.get(url).then((res) => setInfo(res));
 
-
-
-}
+  return (
+    <div className="container">
+      <EmployeeItem employees={info} />
+    </div>
+  );
+};
 
 export default ShowAllEmployees;

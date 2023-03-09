@@ -1,9 +1,12 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "some other name",
+      "email": "some other mail",
+      "phone": 7685769564,
+      "date": "21/12/1994",
+      "salary": 5430,
+      "id": 1
     },
     {
       "name": "some name",
@@ -12,6 +15,14 @@
       "date": "22/02/2222",
       "salary": 3000,
       "id": 2
+    },
+    {
+      "name": "Mike",
+      "email": "mike@gmail.com",
+      "phone": 359785634221,
+      "date": "10/12/1999",
+      "salary": 3000,
+      "id": 3
     }
   ],
   "comments": [
