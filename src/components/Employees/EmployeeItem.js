@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import './EmployeeItem.css'
+import "./EmployeeItem.css";
 
 const EmployeeItem = (props) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const EmployeeItem = (props) => {
       </thead>
       <tbody>
         {props.employees.length === 0 && (
-          <tr className="no-data" >
+          <tr className="no-data">
             <td colSpan={6}>No data available</td>
           </tr>
         )}

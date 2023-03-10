@@ -27,7 +27,7 @@ const TaskItem = (props) => {
                 <td>{el.title}</td>
                 <td>{el.description}</td>
                 <td>{el.dueDate}</td>
-                <td>{el.assignee ? el.assignee : "NONE"}</td>
+                <td>{el.employee ? el.employee.name  : "NONE"}</td>
                 <td>
                   <button onClick={() => navigate(`/tasks/${el.id}`)}>
                     View

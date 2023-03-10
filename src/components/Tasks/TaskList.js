@@ -3,14 +3,15 @@ import * as api from "../../requests/API";
 import { useState, useEffect } from "react";
 import TaskItem from "./TaskItem";
 
-const GetTasks = () => {
+const TaskList = () => {
   const [tasks, setTasks] = useState("");
 
-  let url = "tasks";
+  let url = "tasks?_expand=employee";
 
   useEffect(() => {
     api.get(url).then((res) => setTasks(res));
   }, []);
+
 
   return (
     <div className="container">
@@ -20,4 +21,4 @@ const GetTasks = () => {
   );
 };
 
-export default GetTasks;
+export default TaskList;

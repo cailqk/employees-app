@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import * as api from "../../requests/API";
 
 const TaskDetails = () => {
+  let urlExt = "?_expand=employee"
   const [task, setTask] = useState("");
   const { id } = useParams();
   const [employees, setEmployees] = useState([]);
@@ -11,7 +12,8 @@ const TaskDetails = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [assignee, setAssignee] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
+  const [employeeName, setEmployeeName] = useState("");
 
   const navigate = useNavigate();
 
@@ -26,15 +28,17 @@ const TaskDetails = () => {
         )
       );
       setEmployees(info);
+
     });
   }, []);
 
   useEffect(() => {
-    api.get("tasks/" + id).then((res) => {
+    api.get("tasks/" + id + urlExt).then((res) => {
       setTitle(res.title);
       setDescription(res.description);
       setDueDate(res.dueDate);
-      setAssignee(res.assignee);
+      setEmployeeId(res.employee.id);
+      setEmployeeName(res.employee.name)
       setTask(res);
     });
   }, []);
@@ -52,7 +56,7 @@ const TaskDetails = () => {
       title,
       description,
       dueDate,
-      assignee,
+      employeeId: Number(employeeId),
     });
 
     navigate("/tasks");
@@ -111,14 +115,13 @@ const TaskDetails = () => {
           ></input>
         </div>
         <div className="form-group">
-          <label>Assign to</label>
+          <label>Assigned to</label>
           <select
             className="from-control"
-            name="assignee"
-            defaultValue={assignee}
-            onChange={(e) => console.log(e.target.value)}
+            name="employeeId"
+            onChange={(e) => setEmployeeId(e.target.value)}
           >
-            <option value="">Please choose an assignee</option>
+            <option value="">{employeeName}</option>
             {employees}
           </select>
         </div>

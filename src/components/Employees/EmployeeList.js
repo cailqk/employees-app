@@ -3,7 +3,7 @@ import * as api from "../../requests/API";
 import { useState, useEffect } from "react";
 import EmployeeItem from "./EmployeeItem";
 
-const GetEmployees = () => {
+const EmployeeList = () => {
   const [info, setInfo] = useState("");
 
   let url = "employees";
@@ -20,4 +20,4 @@ const GetEmployees = () => {
   );
 };
 
-export default GetEmployees;
+export default EmployeeList;

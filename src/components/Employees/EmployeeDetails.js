@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router";
 
 import * as api from "../../requests/API";
 
-const Details = () => {
+const EmployeeDetails = () => {
+  let urlExt = "?_embed=tasks";
   const [employee, setEmployee] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,15 +14,18 @@ const Details = () => {
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [salary, setSalary] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    api.get("employees/" + id).then((res) => {
+    api.get("employees/" + id + urlExt).then((res) => {
       setName(res.name);
       setEmail(res.email);
       setPhone(res.phone);
       setDate(res.date);
       setSalary(res.salary);
       setEmployee(res);
+      setTasks(res.tasks);
+      console.log(res.tasks);
     });
   }, []);
 
@@ -119,13 +123,38 @@ const Details = () => {
           ></input>
         </div>
         <div>
-          <button type="submit" className="btn btn-success" onClick={editHandler}>
+          <ul>
+            {tasks.length === 0 && <li>No current tasks</li>}
+            {tasks.length !== 0 &&
+              tasks.map((el) => {
+                return (
+                  <li key={el.id}>
+                    {el.title} - {el.dueDate}
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+        <div>
+          <button
+            type="submit"
+            className="btn btn-success"
+            onClick={editHandler}
+          >
             Save
           </button>
-          <button type="submit" className="btn btn-danger" onClick={deleteHandler}>
+          <button
+            type="submit"
+            className="btn btn-danger"
+            onClick={deleteHandler}
+          >
             Delete
           </button>
-          <button type="submit" className="btn btn-secondary" onClick={cancelHandler}>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={cancelHandler}
+          >
             Cancel
           </button>
         </div>
@@ -134,4 +163,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default EmployeeDetails;

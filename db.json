@@ -7,27 +7,38 @@
       "date": "10/12/1999",
       "salary": 3000,
       "id": 1
+    },
+    {
+      "name": "Jeff",
+      "email": "jeff@jeff.com",
+      "phone": 854093850473,
+      "birthday": "28/01/1990",
+      "salary": 2000,
+      "id": 2,
+      "date": "10/12/1999"
     }
   ],
   "tasks": [
     {
-      "title": "A task",
+      "title": "First Task",
       "description": "Something for a task",
-      "dueDate": "22/02/2222",
+      "dueDate": "13/03/2023",
+      "employeeId": 1,
       "id": 1
     },
     {
-      "title": "dadada",
-      "description": "dadada",
+      "title": "gsfagsfdgfd",
+      "description": "gsfdgfdsgsd",
       "dueDate": "22/02/2222",
-      "id": 2,
-      "assignee": "1"
+      "employeeId": 1,
+      "id": 2
     },
     {
-      "title": "aaaaaaaaaaaaaa",
-      "description": "aaaaaaaaaaaaa",
-      "dueDate": "10/12/2023",
-      "id": 4
+      "title": "gsfdgfds",
+      "description": "Mail",
+      "dueDate": "13/03/2023",
+      "employeeId": 2,
+      "id": 3
     }
   ],
   "profile": {

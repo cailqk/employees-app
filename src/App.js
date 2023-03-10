@@ -2,11 +2,11 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import CreateEmployee from "./components/Employees/CreateEmployee";
-import GetEmployees from "./components/Employees/GetEmployees";
+import GetEmployees from "./components/Employees/EmployeeList";
 import NavBar from "./components/NavBar";
-import Details from "./components/Employees/Details";
+import EmployeeDetails from "./components/Employees/EmployeeDetails";
 import CreateTask from "./components/Tasks/CreateTask";
-import GetTasks from "./components/Tasks/GetTasks";
+import GetTasks from "./components/Tasks/TaskList";
 import TaskDetails from "./components/Tasks/TaskDetails";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/employees/add" element={<CreateEmployee />}></Route>
-          <Route path="/employees/:id" element={<Details />}></Route>
+          <Route path="/employees/:id" element={<EmployeeDetails />}></Route>
           <Route path="/employees" element={<GetEmployees />}></Route>
           <Route path="/tasks" element={<GetTasks />}></Route>
           <Route path="/tasks/add" element={<CreateTask />}></Route>
