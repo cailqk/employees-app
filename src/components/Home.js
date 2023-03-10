@@ -1,9 +1,9 @@
-import * as api from "../../requests/API";
+import * as api from "../requests/API";
 
 import { useState } from "react";
-import EmployeeItem from "./EmployeeItem";
+import EmployeeItem from "./Employees/EmployeeItem";
 
-const ShowAllEmployees = () => {
+const Home = () => {
   const [info, setInfo] = useState("");
 
   let url = "employee";
@@ -12,9 +12,10 @@ const ShowAllEmployees = () => {
 
   return (
     <div className="container">
+      <h1>Employees</h1>
       <EmployeeItem employees={info} />
     </div>
   );
 };
 
-export default ShowAllEmployees;
+export default Home;

@@ -9,11 +9,12 @@
       "id": 1
     }
   ],
-  "comments": [
+  "tasks": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "A task",
+      "description": "Something for a task",
+      "dueDate": "22/02/2222",
+      "id": 1
     }
   ],
   "profile": {

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar">
       <NavLink className="navbar-brand" to="/">
         Navbar
       </NavLink>
@@ -10,7 +10,10 @@ const NavBar = () => {
         Home
       </NavLink>
       <NavLink className="nav-item nav-link" to="/add-employee">
-        Add
+        Add employee
+      </NavLink>
+      <NavLink className="nav-item nav-link" to="/add-task">
+        Add Task
       </NavLink>
     </nav>
   );
