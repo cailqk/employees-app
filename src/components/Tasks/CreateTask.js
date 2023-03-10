@@ -21,7 +21,7 @@ const CreateTask = () => {
         description,
         dueDate,
       });
-      navigate("/");
+      navigate("/tasks");
     }
   };
 

@@ -6,7 +6,7 @@ const CreateEmployee = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
+  const [birthday, setBirtday] = useState("");
   const [salary, setSalary] = useState("");
 
   const navigate = useNavigate();
@@ -18,19 +18,19 @@ const CreateEmployee = () => {
       name === "" ||
       email === "" ||
       phone === "" ||
-      date === "" ||
+      birthday === "" ||
       salary === ""
     ) {
       window.alert("Please fill all the fields!");
     } else {
-      api.post("employee", {
+      api.post("employees", {
         name,
         email,
         phone: Number(phone),
-        date,
+        birthday,
         salary: Number(salary),
       });
-      navigate('/')
+      navigate('/employees')
     }
   };
 
@@ -72,8 +72,8 @@ const CreateEmployee = () => {
           className="from-control"
           type="text"
           id="date-input"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          value={birthday}
+          onChange={(e) => setBirtday(e.target.value)}
         ></input>
       </div>
       <div className="form-group">

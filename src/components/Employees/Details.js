@@ -15,7 +15,7 @@ const Details = () => {
   const [salary, setSalary] = useState("");
 
   useEffect(() => {
-    api.get("employee/" + id).then((res) => {
+    api.get("employees/" + id).then((res) => {
       setName(res.name);
       setEmail(res.email);
       setPhone(res.phone);
@@ -33,9 +33,9 @@ const Details = () => {
         "Would you really like to delete this employee from the list ?"
       ) === true
     ) {
-      api.del("employee/" + employee.id).then((res) => {
+      api.del("employees/" + employee.id).then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/employees");
       });
     } else {
       console.log("no");
@@ -46,7 +46,7 @@ const Details = () => {
     e.preventDefault();
 
     api
-      .patch("employee/" + employee.id, {
+      .patch("employees/" + employee.id, {
         name,
         email,
         phone,
@@ -55,13 +55,13 @@ const Details = () => {
       })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/employees");
       });
   };
 
   const cancelHandler = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/employees");
   };
 
   return (

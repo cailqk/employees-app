@@ -32,7 +32,7 @@ const EmployeeItem = (props) => {
                 <td>{el.date}</td>
                 <td>{el.salary}</td>
                 <td>
-                  <button onClick={() => navigate(`/employee/${el.id}`)}>
+                  <button onClick={() => navigate(`/employees/${el.id}`)}>
                     View
                   </button>
                 </td>
