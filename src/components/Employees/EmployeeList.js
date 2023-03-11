@@ -9,7 +9,8 @@ const EmployeeList = () => {
   let url = "employees";
 
   useEffect(() => {
-    api.get(url).then((res) => setInfo(res));
+    api.get(url)
+    .then((res) =>  setInfo(res));
   }, []);
 
   return (

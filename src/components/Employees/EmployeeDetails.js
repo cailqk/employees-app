@@ -128,7 +128,7 @@ const EmployeeDetails = () => {
                 const due = new Date(el.dueDate).toDateString();
                 return (
                   <li key={el.id}>
-                    {el.title} - {due}
+                    {el.title} - {due} 
                   </li>
                 );
               })}

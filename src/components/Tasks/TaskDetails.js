@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import * as api from "../../requests/API";
 
 const TaskDetails = () => {
-  let urlExt = "?_expand=employee"
+  let urlExt = "?_expand=employee";
   const [task, setTask] = useState("");
   const { id } = useParams();
   const [employees, setEmployees] = useState([]);
@@ -14,6 +14,7 @@ const TaskDetails = () => {
   const [dueDate, setDueDate] = useState("");
   const [employeeId, setEmployeeId] = useState("");
   const [employeeName, setEmployeeName] = useState("");
+  const completed = useRef(null);
 
   const navigate = useNavigate();
 
@@ -28,18 +29,24 @@ const TaskDetails = () => {
         )
       );
       setEmployees(info);
-
     });
   }, []);
 
   useEffect(() => {
     api.get("tasks/" + id + urlExt).then((res) => {
-      const due = new Date(res.dueDate)
+      const due = new Date(res.dueDate);
+      const month = due.getMonth() + 1;
+      const day = due.getDate();
+
+      const date = `${due.getFullYear()}-${`0${month}`.slice(
+        -2
+      )}-${`0${day}`.slice(-2)}`;
       setTitle(res.title);
       setDescription(res.description);
-      setDueDate(due.toDateString());
+      setDueDate(date);
+      completed.current.value = res.completed;
       setEmployeeId(res.employee.id);
-      setEmployeeName(res.employee.name)
+      setEmployeeName(res.employee.name);
       setTask(res);
     });
   }, []);
@@ -57,6 +64,7 @@ const TaskDetails = () => {
       title,
       description,
       dueDate,
+      completed: completed.current.value,
       employeeId: Number(employeeId),
     });
 
@@ -71,8 +79,7 @@ const TaskDetails = () => {
         "Would you really like to delete this task from the board ?"
       ) === true
     ) {
-      api.del("tasks/" + task.id)
-      .then((res) => {
+      api.del("tasks/" + task.id).then((res) => {
         console.log(res);
         navigate("/tasks");
       });
@@ -109,10 +116,20 @@ const TaskDetails = () => {
           <label>Due Date</label>
           <input
             className="from-control"
-            type="text"
+            type="date"
             id="phone-input"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
+          ></input>
+        </div>
+        <div className="form-group">
+          <label>Completed At</label>
+          <input
+            ref={completed}
+            className="from-control"
+            type="date"
+            id="phone-input"
+            onChange={(e) => completed.current.value = e.target.value}
           ></input>
         </div>
         <div className="form-group">

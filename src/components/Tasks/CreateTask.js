@@ -40,8 +40,9 @@ const CreateTask = () => {
       api.post("tasks", {
         title,
         description,
-        dueDate: new Date(dueDate),
+        dueDate: new Date(dueDate).getTime(),
         employeeId: Number(employeeId),
+        completed: ''
       });
       navigate("/tasks");
     }
