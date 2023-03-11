@@ -20,17 +20,17 @@ const CreateEmployee = () => {
       phone === "" ||
       birthday === "" ||
       salary === ""
-    ) {
+      ) {
       window.alert("Please fill all the fields!");
     } else {
       api.post("employees", {
         name,
         email,
         phone: Number(phone),
-        birthday,
+        birthday: new Date(birthday),
         salary: Number(salary),
       });
-      navigate('/employees')
+      navigate("/employees");
     }
   };
 
@@ -67,11 +67,11 @@ const CreateEmployee = () => {
         ></input>
       </div>
       <div className="form-group">
-        <label>Date</label>
+        <label>Birthday</label>
         <input
           className="from-control"
-          type="text"
-          id="date-input"
+          type="date"
+          id="birthday-input"
           value={birthday}
           onChange={(e) => setBirtday(e.target.value)}
         ></input>

@@ -34,9 +34,10 @@ const TaskDetails = () => {
 
   useEffect(() => {
     api.get("tasks/" + id + urlExt).then((res) => {
+      const due = new Date(res.dueDate)
       setTitle(res.title);
       setDescription(res.description);
-      setDueDate(res.dueDate);
+      setDueDate(due.toDateString());
       setEmployeeId(res.employee.id);
       setEmployeeName(res.employee.name)
       setTask(res);

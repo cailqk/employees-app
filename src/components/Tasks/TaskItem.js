@@ -22,12 +22,13 @@ const TaskItem = (props) => {
         )}
         {props.tasks.length > 0 &&
           props.tasks.map((el) => {
+            const date = new Date(el.dueDate);
             return (
               <tr key={el.id}>
                 <td>{el.title}</td>
                 <td>{el.description}</td>
-                <td>{el.dueDate}</td>
-                <td>{el.employee ? el.employee.name  : "NONE"}</td>
+                <td>{date.toDateString()}</td>
+                <td>{el.employee ? el.employee.name : "NONE"}</td>
                 <td>
                   <button onClick={() => navigate(`/tasks/${el.id}`)}>
                     View

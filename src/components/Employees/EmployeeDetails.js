@@ -12,20 +12,20 @@ const EmployeeDetails = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [salary, setSalary] = useState("");
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     api.get("employees/" + id + urlExt).then((res) => {
+      const birthday = new Date(res.birthday);
       setName(res.name);
       setEmail(res.email);
       setPhone(res.phone);
-      setDate(res.date);
+      setBirthday(birthday.toDateString());
       setSalary(res.salary);
       setEmployee(res);
       setTasks(res.tasks);
-      console.log(res.tasks);
     });
   }, []);
 
@@ -38,7 +38,6 @@ const EmployeeDetails = () => {
       ) === true
     ) {
       api.del("employees/" + employee.id).then((res) => {
-        console.log(res);
         navigate("/employees");
       });
     } else {
@@ -54,11 +53,10 @@ const EmployeeDetails = () => {
         name,
         email,
         phone,
-        date,
+        birthday: new Date(birthday),
         salary,
       })
       .then((res) => {
-        console.log(res);
         navigate("/employees");
       });
   };
@@ -103,13 +101,13 @@ const EmployeeDetails = () => {
           ></input>
         </div>
         <div className="form-group">
-          <label>Date</label>
+          <label>Birthday</label>
           <input
             className="from-control"
             type="text"
             id="date-input"
-            defaultValue={employee.date}
-            onChange={(e) => setDate(e.target.value)}
+            defaultValue={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
           ></input>
         </div>
         <div className="form-group">
@@ -127,9 +125,10 @@ const EmployeeDetails = () => {
             {tasks.length === 0 && <li>No current tasks</li>}
             {tasks.length !== 0 &&
               tasks.map((el) => {
+                const due = new Date(el.dueDate).toDateString();
                 return (
                   <li key={el.id}>
-                    {el.title} - {el.dueDate}
+                    {el.title} - {due}
                   </li>
                 );
               })}

@@ -24,12 +24,13 @@ const EmployeeItem = (props) => {
         )}
         {props.employees.length > 0 &&
           props.employees.map((el) => {
+            const birtday = new Date(el.birthday)
             return (
               <tr key={el.id}>
                 <td>{el.name}</td>
                 <td>{el.email}</td>
                 <td>{el.phone}</td>
-                <td>{el.date}</td>
+                <td>{birtday.toDateString()}</td>
                 <td>{el.salary}</td>
                 <td>
                   <button onClick={() => navigate(`/employees/${el.id}`)}>

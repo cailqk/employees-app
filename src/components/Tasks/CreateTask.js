@@ -40,7 +40,7 @@ const CreateTask = () => {
       api.post("tasks", {
         title,
         description,
-        dueDate,
+        dueDate: new Date(dueDate),
         employeeId: Number(employeeId),
       });
       navigate("/tasks");
@@ -73,7 +73,7 @@ const CreateTask = () => {
         <label>Due Date</label>
         <input
           className="from-control"
-          type="text"
+          type="date"
           id="phone-input"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
