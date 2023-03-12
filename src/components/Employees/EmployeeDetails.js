@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import * as api from "../../requests/API";
 
 const EmployeeDetails = () => {
-  let urlExt = "?_embed=tasks";
+  let urlExt = "?_embed=tasks&_expand=department";
   const [employee, setEmployee] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,18 +14,37 @@ const EmployeeDetails = () => {
   const [phone, setPhone] = useState("");
   const [birthday, setBirthday] = useState("");
   const [salary, setSalary] = useState("");
+  const [departmentId, setDepartmentId] = useState("");
   const [tasks, setTasks] = useState([]);
+
+  const [choose, setChoose] = useState([]);
 
   useEffect(() => {
     api.get("employees/" + id + urlExt).then((res) => {
+      console.log(res);
       const birthday = new Date(res.birthday);
       setName(res.name);
       setEmail(res.email);
       setPhone(res.phone);
       setBirthday(birthday.toDateString());
       setSalary(res.salary);
+      setDepartmentId(res.department.name);
       setEmployee(res);
       setTasks(res.tasks);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get("departments").then((res) => {
+      const info = [];
+      res.forEach((el) =>
+        info.push(
+          <option key={el.id} value={el.id}>
+            {el.name}
+          </option>
+        )
+      );
+      setChoose(info);
     });
   }, []);
 
@@ -55,6 +74,7 @@ const EmployeeDetails = () => {
         phone,
         birthday: new Date(birthday),
         salary,
+        departmentId,
       })
       .then((res) => {
         navigate("/employees");
@@ -121,6 +141,16 @@ const EmployeeDetails = () => {
           ></input>
         </div>
         <div>
+          <label>Department</label>
+          <select
+            name="department"
+            onChange={(e) => setDepartmentId(e.target.value)}
+          >
+            <option>{departmentId}</option>
+            {choose}
+          </select>
+        </div>
+        <div>
           <ul>
             {tasks.length === 0 && <li>No current tasks</li>}
             {tasks.length !== 0 &&
@@ -128,7 +158,7 @@ const EmployeeDetails = () => {
                 const due = new Date(el.dueDate).toDateString();
                 return (
                   <li key={el.id}>
-                    {el.title} - {due} 
+                    {el.title} - {due}
                   </li>
                 );
               })}

@@ -51,9 +51,9 @@ const CreateTask = () => {
   return (
     <form onSubmit={submitHandler}>
       <div className="form-group">
-        <label>Title</label>
+        <label className="form-label">Title</label>
         <input
-          className="from-control"
+          className="form-control"
           type="text"
           id="name-input"
           value={title}
@@ -63,7 +63,7 @@ const CreateTask = () => {
       <div className="form-group">
         <label>Description</label>
         <input
-          className="from-control"
+          className="form-control"
           type="text"
           id="email-input"
           value={description}
@@ -73,7 +73,7 @@ const CreateTask = () => {
       <div className="form-group">
         <label>Due Date</label>
         <input
-          className="from-control"
+          className="form-control"
           type="date"
           id="phone-input"
           value={dueDate}
@@ -83,7 +83,7 @@ const CreateTask = () => {
       <div>
         <label>Assign to</label>
         <select
-          className="from-control"
+          className="form-control"
           name="assignee"
           onChange={(e) => setEmployeeId(e.target.value)}
         >
@@ -91,7 +91,7 @@ const CreateTask = () => {
           {employees}
         </select>
       </div>
-      <div>
+      <div className="text-end">
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

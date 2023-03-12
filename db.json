@@ -31,6 +31,40 @@
       "birthday": "2004-11-25T00:00:00.000Z",
       "salary": 2000,
       "id": 6
+    },
+    {
+      "name": "Bill",
+      "email": "dsajdiosajfsa",
+      "phone": 55555,
+      "birthday": "2000-04-22T00:00:00.000Z",
+      "salary": 3333,
+      "id": 7
+    },
+    {
+      "name": "gfdagfdsg",
+      "email": "fasgfdgfds",
+      "phone": 55555,
+      "birthday": "2222-02-22T00:00:00.000Z",
+      "salary": 543,
+      "id": 8
+    },
+    {
+      "name": "gfdsgsfd",
+      "email": "gsfhsgfdh",
+      "phone": 555,
+      "birthday": "2222-02-22T00:00:00.000Z",
+      "salary": 555,
+      "id": 9
+    },
+    {
+      "name": "George",
+      "email": "george@test.com",
+      "phone": 55555,
+      "birthday": "1990-10-11T22:00:00.000Z",
+      "salary": 3333,
+      "departmentId": "2",
+      "id": 10,
+      "department": "3"
     }
   ],
   "tasks": [
@@ -117,14 +151,14 @@
   ],
   "departments": [
     {
-      "name": "Human Resources",
-      "description": "This is the place where employees come and discuss their problems or ideas about the working process.",
-      "id": 1
-    },
-    {
       "name": "Construction",
       "description": "This department is responsible for all the wark, related to building stuff and it is really cool.",
       "id": 2
+    },
+    {
+      "name": "DADADAD",
+      "description": "dadsafdsagfsghfds",
+      "id": 3
     }
   ]
 }

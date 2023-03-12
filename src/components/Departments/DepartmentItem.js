@@ -26,7 +26,7 @@ const DepartmentItem = (props) => {
                 <td>{el.name}</td>
                 <td>{el.description}</td>
                 <td>
-                  <button className="btn btn-success" onClick={() => navigate(`/departments/${el.id}`)}>
+                  <button onClick={() => navigate(`/departments/${el.id}`)}>
                     View
                   </button>
                 </td>
