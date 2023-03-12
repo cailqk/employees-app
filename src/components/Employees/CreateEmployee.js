@@ -11,7 +11,7 @@ const CreateEmployee = () => {
 
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     if (
@@ -23,7 +23,7 @@ const CreateEmployee = () => {
       ) {
       window.alert("Please fill all the fields!");
     } else {
-      api.post("employees", {
+     await api.post("employees", {
         name,
         email,
         phone: Number(phone),

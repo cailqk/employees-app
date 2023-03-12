@@ -26,7 +26,7 @@ const CreateTask = () => {
     });
   }, []);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     if (
@@ -37,7 +37,7 @@ const CreateTask = () => {
     ) {
       window.alert("Please fill all the fields!");
     } else {
-      api.post("tasks", {
+     await api.post("tasks", {
         title,
         description,
         dueDate: new Date(dueDate).getTime(),

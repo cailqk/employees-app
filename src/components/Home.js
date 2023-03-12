@@ -26,7 +26,6 @@ const Home = () => {
           found.tasks++;
         }
       });
-      console.log(result);
       setResult(data);
     });
   }, []);
@@ -40,6 +39,8 @@ const Home = () => {
 
     return `${year}-${month}-${day}`;
   }
+
+  result.sort((a, b) => b.tasks - a.tasks).slice(0, 5);
 
   return (
     <div>
