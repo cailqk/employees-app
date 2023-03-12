@@ -2,13 +2,16 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import CreateEmployee from "./components/Employees/CreateEmployee";
-import GetEmployees from "./components/Employees/EmployeeList";
 import NavBar from "./components/NavBar";
 import EmployeeDetails from "./components/Employees/EmployeeDetails";
 import CreateTask from "./components/Tasks/CreateTask";
-import GetTasks from "./components/Tasks/TaskList";
 import TaskDetails from "./components/Tasks/TaskDetails";
 import Home from "./components/Home";
+import DepartmentList from "./components/Departments/DepartmentList";
+import CreateDepartment from "./components/Departments/CreateDepartment";
+import TaskList from "./components/Tasks/TaskList";
+import EmployeeList from "./components/Employees/EmployeeList";
+import DepartmentDetails from "./components/Departments/DepartmentDetails";
 
 function App() {
   return (
@@ -17,12 +20,15 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/employees" element={<EmployeeList />}></Route>
           <Route path="/employees/add" element={<CreateEmployee />}></Route>
           <Route path="/employees/:id" element={<EmployeeDetails />}></Route>
-          <Route path="/employees" element={<GetEmployees />}></Route>
-          <Route path="/tasks" element={<GetTasks />}></Route>
+          <Route path="/tasks" element={<TaskList />}></Route>
           <Route path="/tasks/add" element={<CreateTask />}></Route>
           <Route path='/tasks/:id' element={<TaskDetails />}></Route>
+          <Route path="/departments" element={<DepartmentList />}></Route>
+          <Route path="/departments/add" element={<CreateDepartment />}></Route>
+          <Route path="/departments/:id" element={<DepartmentDetails />}></Route>
         </Routes>
       </div>
     </div>

@@ -20,10 +20,10 @@ const CreateEmployee = () => {
       phone === "" ||
       birthday === "" ||
       salary === ""
-      ) {
+    ) {
       window.alert("Please fill all the fields!");
     } else {
-     await api.post("employees", {
+      await api.post("employees", {
         name,
         email,
         phone: Number(phone),
@@ -37,7 +37,7 @@ const CreateEmployee = () => {
   return (
     <form onSubmit={submitHandler}>
       <div className="form-group">
-        <label>Name</label>
+        <label className="form-label">Name</label>
         <input
           className="from-control"
           type="text"

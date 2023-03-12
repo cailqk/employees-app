@@ -115,7 +115,16 @@
       "id": 10
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "departments": [
+    {
+      "name": "Human Resources",
+      "description": "This is the place where employees come and discuss their problems or ideas about the working process.",
+      "id": 1
+    },
+    {
+      "name": "Construction",
+      "description": "This department is responsible for all the wark, related to building stuff and it is really cool.",
+      "id": 2
+    }
+  ]
 }

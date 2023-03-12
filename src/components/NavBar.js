@@ -18,6 +18,12 @@ const NavBar = () => {
       <NavLink className="nav-item nav-link" to="/tasks/add">
         Add Task
       </NavLink>
+      <NavLink className="nav-item nav-link" to="/departments">
+       Departments
+      </NavLink>
+      <NavLink className="nav-item nav-link" to="/departments/add">
+      Add Department
+      </NavLink>
     </nav>
   );
 };
