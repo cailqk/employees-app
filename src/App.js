@@ -2,11 +2,11 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import CreateEmployee from "./components/Employees/CreateEmployee";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Core/NavBar";
 import EmployeeDetails from "./components/Employees/EmployeeDetails";
 import CreateTask from "./components/Tasks/CreateTask";
 import TaskDetails from "./components/Tasks/TaskDetails";
-import Home from "./components/Home";
+import Home from "./components/Core/Home";
 import DepartmentList from "./components/Departments/DepartmentList";
 import CreateDepartment from "./components/Departments/CreateDepartment";
 import TaskList from "./components/Tasks/TaskList";

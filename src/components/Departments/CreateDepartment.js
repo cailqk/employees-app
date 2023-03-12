@@ -22,7 +22,9 @@ const CreateDepartment = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <div className="row">
+      <div className="col-md-6 offset-md-3">
+      <form onSubmit={submitHandler}>
       <div className="form-group">
         <label className="form-label">Name</label>
         <input
@@ -31,6 +33,7 @@ const CreateDepartment = () => {
           id="name-input"
           defaultValue={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -41,14 +44,18 @@ const CreateDepartment = () => {
           id="description-input"
           defaultValue={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         ></textarea>
       </div>
-      <div className="text-end">
+      <div className="text-end mt-3">
         <button type="submit" className="btn btn-primary">
           Create
         </button>
       </div>
     </form>
+      </div>
+    </div>
+    
   );
 };
 

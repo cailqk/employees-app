@@ -12,7 +12,6 @@ const TaskList = () => {
     api.get(url).then((res) => setTasks(res));
   }, []);
 
-
   return (
     <div className="container">
       <h1>Tasks</h1>

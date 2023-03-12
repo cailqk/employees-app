@@ -30,7 +30,7 @@ const TaskItem = (props) => {
                 <td>{date.toDateString()}</td>
                 <td>{el.employee ? el.employee.name : "NONE"}</td>
                 <td>
-                  <button onClick={() => navigate(`/tasks/${el.id}`)}>
+                  <button className="btn btn-success btn-sm" onClick={() => navigate(`/tasks/${el.id}`)}>
                     View
                   </button>
                 </td>

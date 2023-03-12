@@ -31,9 +31,9 @@ const EmployeeItem = (props) => {
                 <td>{el.email}</td>
                 <td>{el.phone}</td>
                 <td>{birtday.toDateString()}</td>
-                <td>{el.salary}</td>
+                <td>${el.salary}</td>
                 <td>
-                  <button onClick={() => navigate(`/employees/${el.id}`)}>
+                  <button className="btn btn-success btn-sm" onClick={() => navigate(`/employees/${el.id}`)}>
                     View
                   </button>
                 </td>

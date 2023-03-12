@@ -45,9 +45,8 @@ const TaskDetails = () => {
       setDescription(res.description);
       setDueDate(date);
       completed.current.value = res.completed;
-      setEmployeeId(res.employee.id);
+      setEmployeeId(res.employeeId);
       setEmployeeName(res.employee.name);
-      setTask(res);
     });
   }, []);
 
@@ -60,7 +59,7 @@ const TaskDetails = () => {
   const editHandler = (e) => {
     e.preventDefault();
 
-    api.patch("tasks/" + task.id, {
+    api.patch("tasks/" + id, {
       title,
       description,
       dueDate,
@@ -89,13 +88,14 @@ const TaskDetails = () => {
   };
 
   return (
-    <div>
-      <h1>Details for '{task.title}'</h1>
+    <div className="row">
+      <div className="col-md-6 offset-md-3">
+      <h1>Details for '{title}'</h1>
       <form>
         <div className="form-group">
           <label>Title</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="name-input"
             value={title}
@@ -105,7 +105,7 @@ const TaskDetails = () => {
         <div className="form-group">
           <label>Description</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="email-input"
             value={description}
@@ -115,7 +115,7 @@ const TaskDetails = () => {
         <div className="form-group">
           <label>Due Date</label>
           <input
-            className="from-control"
+            className="form-control"
             type="date"
             id="phone-input"
             value={dueDate}
@@ -126,7 +126,7 @@ const TaskDetails = () => {
           <label>Completed At</label>
           <input
             ref={completed}
-            className="from-control"
+            className="form-control"
             type="date"
             id="phone-input"
             onChange={(e) => completed.current.value = e.target.value}
@@ -135,7 +135,7 @@ const TaskDetails = () => {
         <div className="form-group">
           <label>Assigned to</label>
           <select
-            className="from-control"
+            className="form-control"
             name="employeeId"
             onChange={(e) => setEmployeeId(e.target.value)}
           >
@@ -143,17 +143,17 @@ const TaskDetails = () => {
             {employees}
           </select>
         </div>
-        <div>
+        <div className="text-end mt-3">
           <button
             type="submit"
-            className="btn btn-success"
+            className="btn btn-success me-1"
             onClick={editHandler}
           >
             Save
           </button>
           <button
             type="submit"
-            className="btn btn-danger"
+            className="btn btn-danger me-1"
             onClick={deleteHandler}
           >
             Delete
@@ -167,6 +167,8 @@ const TaskDetails = () => {
           </button>
         </div>
       </form>
+      </div>
+      
     </div>
   );
 };

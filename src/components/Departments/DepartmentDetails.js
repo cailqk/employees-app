@@ -6,17 +6,19 @@ import * as api from "../../requests/API";
 const DepartmentDetails = () => {
   const navigate = useNavigate();
 
+  let urlExt = "?_embed=employees";
+
   const { id } = useParams();
-  const [department, setDepartment] = useState({});
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    api.get("departments/" + id).then((res) => {
+    api.get("departments/" + id + urlExt).then((res) => {
       setName(res.name);
       setDescription(res.description);
-      setDepartment(res);
+      setEmployees(res.employees);
     });
   }, []);
 
@@ -52,13 +54,14 @@ const DepartmentDetails = () => {
   };
 
   return (
-    <div>
-      <h1>Details for '{department.name}'</h1>
+    <div className="row">
+      <div className="col-md-6 offset-md-3">
+      <h1>Details for '{name}'</h1>
       <form>
         <div className="form-group">
           <label>Name</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="name-input"
             defaultValue={name}
@@ -68,7 +71,7 @@ const DepartmentDetails = () => {
         <div className="form-group">
           <label>Description</label>
           <textarea
-            className="from-control"
+            className="form-control"
             type="text"
             id="email-input"
             defaultValue={description}
@@ -76,16 +79,22 @@ const DepartmentDetails = () => {
           ></textarea>
         </div>
         <div>
+          <label className="form-group">Employees</label>
+          {employees.map((el) => (
+            <p className="form-control" key={el.id}>{el.name}</p>
+          ))}
+        </div>
+        <div className="text-end mt-3">
           <button
             type="submit"
-            className="btn btn-success"
+            className="btn btn-success me-1"
             onClick={editHandler}
           >
             Save
           </button>
           <button
             type="submit"
-            className="btn btn-danger"
+            className="btn btn-danger me-1"
             onClick={deleteHandler}
           >
             Delete
@@ -99,6 +108,8 @@ const DepartmentDetails = () => {
           </button>
         </div>
       </form>
+      </div>
+      
     </div>
   );
 };

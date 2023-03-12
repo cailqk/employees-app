@@ -21,7 +21,6 @@ const EmployeeDetails = () => {
 
   useEffect(() => {
     api.get("employees/" + id + urlExt).then((res) => {
-      console.log(res);
       const birthday = new Date(res.birthday);
       setName(res.name);
       setEmail(res.email);
@@ -74,7 +73,7 @@ const EmployeeDetails = () => {
         phone,
         birthday: new Date(birthday),
         salary,
-        departmentId,
+        departmentId: Number(departmentId),
       })
       .then((res) => {
         navigate("/employees");
@@ -87,13 +86,14 @@ const EmployeeDetails = () => {
   };
 
   return (
-    <div>
+    <div className="row">
+      <div className="col-md-6 offset-3">
       <h1>Details for '{employee.name}'</h1>
       <form>
         <div className="form-group">
-          <label>Name</label>
+          <label className="form-label">Name</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="name-input"
             defaultValue={employee.name}
@@ -103,7 +103,7 @@ const EmployeeDetails = () => {
         <div className="form-group">
           <label>Email</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="email-input"
             defaultValue={employee.email}
@@ -113,7 +113,7 @@ const EmployeeDetails = () => {
         <div className="form-group">
           <label>Phone</label>
           <input
-            className="from-control"
+            className="form-control"
             type="number"
             id="phone-input"
             defaultValue={employee.phone}
@@ -123,7 +123,7 @@ const EmployeeDetails = () => {
         <div className="form-group">
           <label>Birthday</label>
           <input
-            className="from-control"
+            className="form-control"
             type="text"
             id="date-input"
             defaultValue={birthday}
@@ -131,9 +131,9 @@ const EmployeeDetails = () => {
           ></input>
         </div>
         <div className="form-group">
-          <label>Salary</label>
+          <label>Salary $</label>
           <input
-            className="from-control"
+            className="form-control"
             type="number"
             id="salary-input"
             defaultValue={employee.salary}
@@ -145,13 +145,14 @@ const EmployeeDetails = () => {
           <select
             name="department"
             onChange={(e) => setDepartmentId(e.target.value)}
+            className="form-control"
           >
-            <option>{departmentId}</option>
+            <option >{departmentId}</option>
             {choose}
           </select>
         </div>
         <div>
-          <ul>
+          <ul className="form-group">
             {tasks.length === 0 && <li>No current tasks</li>}
             {tasks.length !== 0 &&
               tasks.map((el) => {
@@ -164,17 +165,17 @@ const EmployeeDetails = () => {
               })}
           </ul>
         </div>
-        <div>
+        <div className="text-end">
           <button
             type="submit"
-            className="btn btn-success"
+            className="btn btn-success me-1"
             onClick={editHandler}
           >
             Save
           </button>
           <button
             type="submit"
-            className="btn btn-danger"
+            className="btn btn-danger me-1"
             onClick={deleteHandler}
           >
             Delete
@@ -188,6 +189,8 @@ const EmployeeDetails = () => {
           </button>
         </div>
       </form>
+      </div>
+      
     </div>
   );
 };

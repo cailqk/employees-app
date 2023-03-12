@@ -49,7 +49,9 @@ const CreateTask = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <div className="row">
+      <div className="col-md-6 offset-md-3">
+      <form onSubmit={submitHandler}>
       <div className="form-group">
         <label className="form-label">Title</label>
         <input
@@ -58,6 +60,7 @@ const CreateTask = () => {
           id="name-input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         ></input>
       </div>
       <div className="form-group">
@@ -68,6 +71,7 @@ const CreateTask = () => {
           id="email-input"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         ></input>
       </div>
       <div className="form-group">
@@ -78,6 +82,7 @@ const CreateTask = () => {
           id="phone-input"
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
+          required
         ></input>
       </div>
       <div>
@@ -86,17 +91,21 @@ const CreateTask = () => {
           className="form-control"
           name="assignee"
           onChange={(e) => setEmployeeId(e.target.value)}
+          required
         >
           <option value=""> </option>
           {employees}
         </select>
       </div>
-      <div className="text-end">
+      <div className="text-end mt-3">
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </div>
     </form>
+      </div>
+    </div>
+    
   );
 };
 

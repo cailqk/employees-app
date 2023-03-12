@@ -47,14 +47,15 @@ const CreateEmployee = () => {
         phone: Number(phone),
         birthday: new Date(birthday),
         salary: Number(salary),
-        departmentId,
+        departmentId: Number(departmentId),
       });
       navigate("/employees");
     }
   };
 
   return (
-    <div className="container">
+    <div className="row">
+      <div className="col-md-6 offset-md-3">
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label className="form-label">Name</label>
@@ -64,6 +65,7 @@ const CreateEmployee = () => {
             id="name-input"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -74,6 +76,7 @@ const CreateEmployee = () => {
             id="email-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -84,6 +87,7 @@ const CreateEmployee = () => {
             id="phone-input"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -94,6 +98,7 @@ const CreateEmployee = () => {
             id="birthday-input"
             value={birthday}
             onChange={(e) => setBirtday(e.target.value)}
+            required
           ></input>
         </div>
         <div className="form-group">
@@ -104,6 +109,7 @@ const CreateEmployee = () => {
             id="salary-input"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -112,17 +118,20 @@ const CreateEmployee = () => {
             className="form-control"
             name="department"
             onChange={(e) => setDepartmentId(e.target.value)}
+            required
           >
             <option value={departmentId}></option>
             {choose}
           </select>
         </div>
-        <div className="form-group">
+        <div className="text-end mt-3">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </div>
       </form>
+      </div>
+      
     </div>
   );
 };
