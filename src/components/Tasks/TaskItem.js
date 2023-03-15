@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import Button from "../UI/Button";
 
 const TaskItem = (props) => {
   const navigate = useNavigate();
@@ -30,9 +31,11 @@ const TaskItem = (props) => {
                 <td>{date.toDateString()}</td>
                 <td>{el.employee ? el.employee.name : "NONE"}</td>
                 <td>
-                  <button className="btn btn-success btn-sm" onClick={() => navigate(`/tasks/${el.id}`)}>
-                    View
-                  </button>
+                  <Button
+                    className="btn btn-success btn-sm"
+                    onClick={() => navigate(`/tasks/${el.id}`)}
+                    name="View"
+                  />
                 </td>
               </tr>
             );

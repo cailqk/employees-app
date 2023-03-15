@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../UI/Button";
 import "./EmployeeItem.css";
 
 const EmployeeItem = (props) => {
@@ -24,7 +25,7 @@ const EmployeeItem = (props) => {
         )}
         {props.employees.length > 0 &&
           props.employees.map((el) => {
-            const birtday = new Date(el.birthday)
+            const birtday = new Date(el.birthday);
             return (
               <tr key={el.id}>
                 <td>{el.name}</td>
@@ -33,9 +34,11 @@ const EmployeeItem = (props) => {
                 <td>{birtday.toDateString()}</td>
                 <td>${el.salary}</td>
                 <td>
-                  <button className="btn btn-success btn-sm" onClick={() => navigate(`/employees/${el.id}`)}>
-                    View
-                  </button>
+                  <Button
+                    className="btn btn-success btn-sm"
+                    onClick={() => navigate(`/employees/${el.id}`)}
+                    name="View"
+                  />
                 </td>
               </tr>
             );

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import * as api from "../../requests/API";
+import Button from "../UI/Button";
 
 const TaskDetails = () => {
   let urlExt = "?_expand=employee";
@@ -90,85 +91,83 @@ const TaskDetails = () => {
   return (
     <div className="row">
       <div className="col-md-6 offset-md-3">
-      <h1>Details for '{title}'</h1>
-      <form>
-        <div className="form-group">
-          <label>Title</label>
-          <input
-            className="form-control"
-            type="text"
-            id="name-input"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Description</label>
-          <input
-            className="form-control"
-            type="text"
-            id="email-input"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Due Date</label>
-          <input
-            className="form-control"
-            type="date"
-            id="phone-input"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Completed At</label>
-          <input
-            ref={completed}
-            className="form-control"
-            type="date"
-            id="phone-input"
-            onChange={(e) => completed.current.value = e.target.value}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Assigned to</label>
-          <select
-            className="form-control"
-            name="employeeId"
-            onChange={(e) => setEmployeeId(e.target.value)}
-          >
-            <option value="">{employeeName}</option>
-            {employees}
-          </select>
-        </div>
-        <div className="text-end mt-3">
-          <button
-            type="submit"
-            className="btn btn-success me-1"
-            onClick={editHandler}
-          >
-            Save
-          </button>
-          <button
-            type="submit"
-            className="btn btn-danger me-1"
-            onClick={deleteHandler}
-          >
-            Delete
-          </button>
-          <button
-            type="submit"
-            className="btn btn-secondary"
-            onClick={cancelHandler}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+        <h1>Details for '{title}'</h1>
+        <form>
+          <div className="form-group">
+            <label>Title</label>
+            <input
+              className="form-control"
+              type="text"
+              id="name-input"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <input
+              className="form-control"
+              type="text"
+              id="email-input"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label>Due Date</label>
+            <input
+              className="form-control"
+              type="date"
+              id="phone-input"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label>Completed At</label>
+            <input
+              ref={completed}
+              className="form-control"
+              type="date"
+              id="phone-input"
+              onChange={(e) => (completed.current.value = e.target.value)}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label>Assigned to</label>
+            <select
+              className="form-control"
+              name="employeeId"
+              onChange={(e) => setEmployeeId(e.target.value)}
+            >
+              <option value="">{employeeName}</option>
+              {employees}
+            </select>
+          </div>
+          <div className="text-end mt-3">
+            <Button
+              type="submit"
+              className="btn btn-success me-1"
+              onClick={editHandler}
+              name="Save"
+            />
+
+            <Button
+              type="submit"
+              className="btn btn-danger me-1"
+              onClick={deleteHandler}
+              name="Delete"
+            />
+
+            <Button
+              type="submit"
+              className="btn btn-secondary"
+              onClick={cancelHandler}
+              name="Cancel"
+            />
+          </div>
+        </form>
       </div>
-      
     </div>
   );
 };

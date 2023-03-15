@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import * as api from "../../requests/API";
+import Button from "../UI/Button";
 
 const { useState, useEffect } = require("react");
 
@@ -98,9 +99,7 @@ const CreateTask = () => {
         </select>
       </div>
       <div className="text-end mt-3">
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <Button type="submit" className="btn btn-primary" name="Submit"/>
       </div>
     </form>
       </div>

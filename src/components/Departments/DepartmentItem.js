@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
+import Button from "../UI/Button";
 
 const DepartmentItem = (props) => {
-  
   const navigate = useNavigate();
 
   return (
@@ -26,9 +26,11 @@ const DepartmentItem = (props) => {
                 <td>{el.name}</td>
                 <td>{el.description}</td>
                 <td>
-                  <button className="btn btn-success btn-sm" onClick={() => navigate(`/departments/${el.id}`)}>
-                    View
-                  </button>
+                  <Button
+                    className="btn btn-success btn-sm"
+                    onClick={() => navigate(`/departments/${el.id}`)}
+                    name="View"
+                  />
                 </td>
               </tr>
             );

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import * as api from "../../requests/API";
+import Button from "../UI/Button";
 
 const DepartmentDetails = () => {
   const navigate = useNavigate();
@@ -56,60 +57,59 @@ const DepartmentDetails = () => {
   return (
     <div className="row">
       <div className="col-md-6 offset-md-3">
-      <h1>Details for '{name}'</h1>
-      <form>
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            className="form-control"
-            type="text"
-            id="name-input"
-            defaultValue={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </div>
-        <div className="form-group">
-          <label>Description</label>
-          <textarea
-            className="form-control"
-            type="text"
-            id="email-input"
-            defaultValue={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </div>
-        <div>
-          <label className="form-group">Employees</label>
-          {employees.map((el) => (
-            <p className="form-control" key={el.id}>{el.name}</p>
-          ))}
-        </div>
-        <div className="text-end mt-3">
-          <button
-            type="submit"
-            className="btn btn-success me-1"
-            onClick={editHandler}
-          >
-            Save
-          </button>
-          <button
-            type="submit"
-            className="btn btn-danger me-1"
-            onClick={deleteHandler}
-          >
-            Delete
-          </button>
-          <button
-            type="submit"
-            className="btn btn-secondary"
-            onClick={cancelHandler}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+        <h1>Details for '{name}'</h1>
+        <form>
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              className="form-control"
+              type="text"
+              id="name-input"
+              defaultValue={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea
+              className="form-control"
+              type="text"
+              id="email-input"
+              defaultValue={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+          </div>
+          <div>
+            <label className="form-group">Employees</label>
+            {employees.map((el) => (
+              <p className="form-control" key={el.id}>
+                {el.name}
+              </p>
+            ))}
+          </div>
+          <div className="text-end mt-3">
+            <Button
+              type="submit"
+              className="btn btn-success me-1"
+              onClick={editHandler}
+              name="Save"
+            />
+            <Button
+              type="submit"
+              className="btn btn-danger me-1"
+              onClick={deleteHandler}
+              name="Delete"
+            />
+
+            <Button
+              type="submit"
+              className="btn btn-secondary"
+              onClick={cancelHandler}
+              name="Cancel"
+            />
+          </div>
+        </form>
       </div>
-      
     </div>
   );
 };
